@@ -1,0 +1,35 @@
+
+.task-container{
+    min-height: 10rem;
+    width: 100%;
+    padding:0.5rem;
+    position:relative;
+    align-content: center;
+}
+
+#task-title{
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+#task-desc{
+    font-size: 17px;
+}
+
+#task-btn{
+    font-size: 18px;
+    position:absolute;
+    bottom:0;
+    padding-top:9rem;
+
+}
+
+@media screen and (max-width: 770px) {
+    .task-container{
+      min-height:5rem;
+    }
+
+    .task-container #task-desc{
+        display:none;
+    }
+}

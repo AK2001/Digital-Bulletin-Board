@@ -1,0 +1,110 @@
+.scroll-container,
+.scroll-area {
+    max-width: inherit;
+    height: 100vh;
+    font-size: 21px;
+}
+
+.scroll-container {
+  overflow: auto;
+  -webkit-scroll-snap-type: y mandatory;
+      -ms-scroll-snap-type: mandatory;
+          scroll-snap-type: y mandatory;
+}
+
+.scroll-area {
+    scroll-snap-align: start;
+}
+
+.scroll-area:nth-of-type(1) {
+    aspect-ratio: 960/300;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('../../assets/sec1_full.png');
+}
+
+.scroll-area:nth-of-type(2) {
+    aspect-ratio: 960/300;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('../../assets/sec2_full.png');
+}
+
+.scroll-area:nth-of-type(3) {
+    aspect-ratio: 960/300;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('../../assets/sec3_full.png');
+}
+
+.scroll-area:nth-of-type(4) {
+    aspect-ratio: 960/300;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('../../assets/sec4_full.png');
+}
+
+#welcome-sec{
+    padding: 2rem;
+}
+
+#welcome-sec > * {
+    margin-bottom: 1rem;
+}
+
+#welcome-sec > *:last-child{
+    margin-top: 1rem;
+}
+
+#welcome-sec-btn,
+#welcome-sec-btn:hover{
+    font-size: 18px;
+    padding: 10px 15px;
+    background-color: #00a6ff;
+    color: white;
+    border-color: transparent;
+}
+
+#welcome-sec-btn:hover{
+    background-color: #008cff;
+}
+
+.goal-img img{
+    max-width: 100%;
+    height: auto;
+}
+
+#goal-sec-btn{
+    color:#2f9eff!important;
+    padding-right: 1rem;
+}
+
+#goal-sec-btn:hover{
+    color: #0088fd !important;
+}
+
+.interested-sec-btns{
+}
+
+.interested-sec-btns Button{
+}
+
+.background-wave{
+    aspect-ratio: 960/300;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.task-container #task-title{
+    min-width: 1rem;
+}
