@@ -3,3 +3,9 @@
     src: local("JosefinSans"),
     url("./fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf") format("truetype");
 }
+
+@font-face {
+    font-family: "satyr";
+    src: local("satyr"),
+    url("./fonts/satyr/satyr.ttf") format("truetype");
+}

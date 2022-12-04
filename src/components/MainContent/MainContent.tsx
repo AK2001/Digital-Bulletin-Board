@@ -7,6 +7,15 @@ import goalIMG from "../../assets/goal_img.png";
 import owlIMG from "../../assets/owl.png";
 import Task from "../Task/Task";
 
+function Logo(){
+    return (
+        <div className="d-flex position-relative logo">
+            <h1 >Citi&nbsp;&nbsp;id</h1>
+            <h1 className="custom-font-logo position-absolute" id="logo-a">A</h1>
+        </div>
+    );
+}
+
 export default function MainContent(){
     return (
         <div className="scroll-container custom-font">
@@ -17,7 +26,10 @@ export default function MainContent(){
                         <Col sm={12}>
                             <img src={owlIMG} height={100} width={100} alt="Owl-logo"/>
                             <div className="shadow-lg bg-white rounded" id="welcome-sec">
-                                <h1>Welcome to Athens Digital Bulletin Board!</h1>
+                                <div className="d-flex justify-content-center">
+                                    <h1>Welcome to</h1>&nbsp;
+                                    <Logo />
+                                </div>
                                 <p>The digital bulletin board is Athens <strong>first</strong>&nbsp;
                                     <u>digital platform</u> where everyone can <strong>contribute</strong>
                                     &nbsp;and get <strong>informed</strong> on all charitable tasks that are currently happening.

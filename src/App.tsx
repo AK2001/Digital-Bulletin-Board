@@ -7,12 +7,11 @@ function App() {
   return (
     <div className="App">
         <header>
-            <NavMenu title={"Fuck"}/>
+            {/*<NavMenu title={"Test"}/>*/}
+            <NavMenu />
         </header>
 
         <main>
-            {/*<br/><br/><br/>*/}
-            {/*<h1 style={{position:"relative",left:"50%"}}>|</h1>*/}
             <MainContent />
         </main>
 

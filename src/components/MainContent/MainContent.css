@@ -1,3 +1,9 @@
+.logo #logo-a{
+    left: 4rem;
+    bottom: 0.2rem;
+    font-weight: bolder;
+}
+
 .scroll-container,
 .scroll-area {
     max-width: inherit;
