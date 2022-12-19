@@ -1,35 +1,39 @@
 
 .task-container{
-    min-height: 10rem;
-    width: 100%;
-    padding:0.5rem;
-    position:relative;
-    align-content: center;
+    min-height: 4rem;
+    width: auto;
 }
 
 #task-title{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bolder;
 }
 
 #task-desc{
-    font-size: 17px;
+    border: 1px solid black;
+    font-size: 16px;
+    height: 4rem;
+    overflow: auto;
 }
 
 #task-btn{
-    font-size: 18px;
-    position:absolute;
-    bottom:0;
-    padding-top:9rem;
-
+    margin-top: 0;
 }
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 768px) {
     .task-container{
-      min-height:5rem;
+        border:1px solid green!important;
+        font-size:smaller;
     }
 
-    .task-container #task-desc{
-        display:none;
-    }
 }
+
+/*@media screen and (max-width: 770px) {*/
+/*    .task-container{*/
+/*      min-height:5rem;*/
+/*    }*/
+
+/*    .task-container #task-desc{*/
+/*        display:none;*/
+/*    }*/
+/*}*/

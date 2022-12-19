@@ -67,16 +67,15 @@
     border-color: #1190ff !important;
 }
 
-@media screen and (max-width: 1160px) {
+@media screen and (max-width: 1200px) {
   .nav-search-bar{
       margin-right: 0;
   }
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1000px) {
   .register-btn,
   .login-btn{
-      margin-top: 10px;
       margin-left: 0;
       margin-right: 0;
   }
