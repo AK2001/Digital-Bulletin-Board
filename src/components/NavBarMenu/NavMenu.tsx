@@ -44,13 +44,13 @@ export default function NavMenu({title="About"}:MenuProps) {
           {/*Signup/login buttons*/}
           <Nav className="ms-auto">
             <Button
-                href = "/#Login"
+                href = "/login"
                 className="login-btn">
               Log in
             </Button>
 
             <Button
-                href = "/#Signup"
+                href = "/signup"
                 className="register-btn">
               Sign Up!
             </Button>

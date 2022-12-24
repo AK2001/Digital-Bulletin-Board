@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
+import {Routes, Route} from "react-router-dom";
 import './App.css';
 import NavMenu from './components/NavBarMenu/NavMenu';
 import MainContent from './components/MainContent/MainContent';
 import axios from "axios";
+import Login from "./components/LoginSignup/Login/Login";
+import Signup from "./components/LoginSignup/Signup/Signup";
 
 function App() {
 
@@ -36,21 +39,23 @@ function App() {
             <NavMenu />
         </header>
 
-        <main>
-            <MainContent />
-        </main>
+        <Routes>
+            <Route path="/" element={<MainContent />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+        </Routes>
 
-        <h1>React and flask</h1>
-                {/* new line start*/}
-        <p>To get your profile details: </p><button onClick={getData}>Click me</button>
-        { <div>
-              <p>Data retrieved :</p>
-            <p>{data.name}</p>
-            <p>{data.age}</p>
-            <p>{data.date}</p>
-            <p>{data.programming}</p>
-            </div>
-        }
+        {/*<h1>React and flask</h1>*/}
+        {/*        /!* new line start*!/*/}
+        {/*<p>To get your profile details: </p><button onClick={getData}>Click me</button>*/}
+        {/*{ <div>*/}
+        {/*      <p>Data retrieved :</p>*/}
+        {/*    <p>{data.name}</p>*/}
+        {/*    <p>{data.age}</p>*/}
+        {/*    <p>{data.date}</p>*/}
+        {/*    <p>{data.programming}</p>*/}
+        {/*    </div>*/}
+        {/*}*/}
          {/* end of new line */}
     </div>
   );

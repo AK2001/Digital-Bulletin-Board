@@ -11,7 +11,7 @@ import Task from "../Task/Task";
 
 export default function MainContent(){
     return (
-        <div className="scroll-container custom-font">
+        <main className="scroll-container custom-font">
 
             <section className="scroll-area">
                 <Container className="text-center h-100">
@@ -160,6 +160,6 @@ export default function MainContent(){
                 </Container>
             </section>
 
-        </div>
+        </main>
     );
 }

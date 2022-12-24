@@ -1,0 +1,11 @@
+@media screen and (max-width: 991px) {
+    main{
+        padding-top: 5rem;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #forgot-pass{
+        padding-top: 1rem;
+    }
+}

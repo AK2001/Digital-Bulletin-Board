@@ -1,0 +1,22 @@
+.form-container{
+}
+
+
+
+@media screen and (max-width: 991px) {
+    main{
+        padding-top: 5rem;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #forgot-pass{
+        padding-top: 1rem;
+    }
+}
+@media screen and (max-width: 320px) {
+    #register-msg{
+        padding-left: 0!important;
+    }
+}
+
