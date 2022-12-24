@@ -1,3 +1,12 @@
+.main-container-singup{
+    aspect-ratio: 960/300;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('../../../assets/sec4_full.png');
+}
+
 @media screen and (max-width: 991px) {
     main{
         padding-top: 5rem;

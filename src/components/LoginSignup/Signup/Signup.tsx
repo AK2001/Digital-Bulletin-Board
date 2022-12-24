@@ -1,10 +1,11 @@
+import './Signup.css'
 import {MDBCard, MDBCardBody, MDBCheckbox, MDBCol, MDBContainer, MDBInput, MDBRow} from "mdb-react-ui-kit";
 import Button from "react-bootstrap/Button";
 
 
 export default function Signup(){
     return(
-        <main className="min-vh-100">
+        <main className="min-vh-100 main-container-singup">
             <MDBContainer className='vh-100'>
 
                 <MDBRow className="vh-100 align-items-center">

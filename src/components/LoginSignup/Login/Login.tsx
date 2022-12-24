@@ -12,7 +12,7 @@ import Button from "react-bootstrap/Button";
 
 export default function Login(){
     return(
-        <main className="min-vh-100">
+        <main className="min-vh-100 main-container-login">
             <MDBContainer className='vh-100'>
 
                 <MDBRow className="vh-100 align-items-center">
