@@ -110,11 +110,9 @@
     }
 }
 
-
-.interested-sec-btns{
-}
-
-.interested-sec-btns Button{
+#contribute-label{
+    font-size: 15px;
+    margin: 5px;
 }
 
 .background-wave{

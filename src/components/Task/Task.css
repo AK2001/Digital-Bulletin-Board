@@ -5,12 +5,12 @@
 }
 
 #task-title{
+    background-color: rgb(230, 230, 230);
     font-size: 18px;
     font-weight: bolder;
 }
 
 #task-desc{
-    border: 1px solid black;
     font-size: 16px;
     height: 4rem;
     overflow: auto;

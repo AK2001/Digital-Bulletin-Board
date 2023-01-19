@@ -1,7 +1,5 @@
 import './Task.css';
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
 
 type TaskProps = {
     title:string
@@ -10,7 +8,7 @@ type TaskProps = {
 
 export default function Task({title,desc}:TaskProps){
     return (
-        <div className="task-container border">
+        <div className="task-container">
             <div id="task-title">
                 <p>{title}</p>
             </div>

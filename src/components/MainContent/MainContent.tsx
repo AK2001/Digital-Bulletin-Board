@@ -25,7 +25,7 @@ export default function MainContent(){
                                     &nbsp;and get <strong>informed</strong> on all charitable tasks that are currently happening.
                                     Continue scrolling or click on the button below to learn how you too can contribute.
                                 </p>
-                                <Button href="/#login" variant="primary" id="welcome-sec-btn">
+                                <Button href="/signup" variant="primary" id="welcome-sec-btn">
                                     Get started!
                                 </Button>
                             </div>
@@ -92,57 +92,10 @@ export default function MainContent(){
                                     </tbody>
                                 </table>
                             </div>
-                            {/*<Row>*/}
-                            {/*    <h1>Take a look!</h1>*/}
-                            {/*</Row>*/}
-
-                            {/*<Row className="justify-content-center task-container">*/}
-                            {/*    <Col sm={3}>*/}
-                            {/*        <h4 className="task-title">Ongoing tasks</h4>*/}
-                            {/*        <Task title={"task1"} desc={"The feelgood org. collects clothes at St.John church for the homeless of the area"}/>*/}
-                            {/*        <Task title={"task2"} desc={"The friends of the forest want volunteers to plant more than 100000 trees in athens at 29/4/2023"}/>*/}
-                            {/*        <Task title={"task3"} desc={"Small Small descriptionSmall descriptionSmall descriptionSmall descriptionSmall descriptionSmall descriptionSmall descriptionSmall descriptionSmall descriptionSmall descriptionSmall descriptionSmall descriptionSmall descriptionSmall descriptionSmall descriptionSmall descriptionSmall descriptionSmall descriptionSmall descriptionSmall descriptionv"}/>*/}
-                            {/*    </Col>*/}
-
-                            {/*    <Col sm={3}>*/}
-                            {/*        <h4 className="task-title">Completed tasks</h4>*/}
-                            {/*        <Task title={"task1"} desc={"The feelgood org. collects clothes at St.John church for the homeless of the area"}/>*/}
-                            {/*        <Task title={"task2"} desc={"The friends of the forest want volunteers to plant more than 100000 trees in athens at 29/4/2023"}/>*/}
-                            {/*        <Task title={"task3"} desc={"Small description"}/>*/}
-                            {/*    </Col>*/}
-
-                            {/*</Row>*/}
                         </Col>
                     </Row>
                 </Container>
             </section>
-
-            {/*<section className="py-5 scroll-area">*/}
-            {/*    <Container className="text-center mt-5 py-5 shadow-lg bg-white rounded">*/}
-            {/*        <Row>*/}
-            {/*            <Col sm={12}>*/}
-            {/*                <h1>Take a look!</h1>*/}
-
-            {/*            </Col>*/}
-            {/*        </Row>*/}
-
-            {/*        <Row className="justify-content-center">*/}
-            {/*            <Col sm={3}>*/}
-            {/*                <h3>Ongoing tasks</h3>*/}
-            {/*                <Task title={"task1"} desc={"The feelgood org. collects clothes at St.John church for the homeless of the area"}/>*/}
-            {/*                <Task title={"task2"} desc={"The friends of the forest want volunteers to plant more than 100000 trees in athens at 29/4/2023"}/>*/}
-            {/*                <Task title={"task3"} desc={"Small description"}/>*/}
-            {/*            </Col>*/}
-
-            {/*            <Col sm={3}>*/}
-            {/*                <h3>Completed tasks</h3>*/}
-            {/*                <Task title={"task1"} desc={"The feelgood org. collects clothes at St.John church for the homeless of the area"}/>*/}
-            {/*                <Task title={"task2"} desc={"The friends of the forest want volunteers to plant more than 100000 trees in athens at 29/4/2023"}/>*/}
-            {/*                <Task title={"task3"} desc={"Small description"}/>*/}
-            {/*            </Col>*/}
-            {/*        </Row>*/}
-            {/*    </Container>*/}
-            {/*</section>*/}
 
             <section className="scroll-area">
                 <Container className="text-center h-100">
@@ -152,8 +105,9 @@ export default function MainContent(){
                                 <h1>Interested in contributing?</h1>
                                 <p>Thanks to the Athens Bulletin Board <u><strong>anyone</strong></u> can
                                     have a positive contribution to their municipality.</p>
-                                <Button>Login</Button>OR
-                                <Button>Signup</Button>
+                                <Button href = "/login">Login</Button>
+                                <span id="contribute-label">OR</span>
+                                <Button href = "/signup">Signup</Button>
                             </div>
                         </Col>
                     </Row>
