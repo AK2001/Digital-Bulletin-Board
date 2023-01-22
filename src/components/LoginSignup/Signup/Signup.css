@@ -1,4 +1,4 @@
-.main-container-singup{
+.main-container-signup{
     aspect-ratio: 960/300;
     width: 100%;
     background-repeat: no-repeat;
@@ -7,14 +7,37 @@
     background-image: url('../../../assets/sec4_full.png');
 }
 
-@media screen and (max-width: 991px) {
+/* Remove arrows from number input for TIN*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* For Firefox */
+input[type=number]{
+    -moz-appearance: textfield;
+}
+
+
+@media screen and (max-width: 767px) {
     main{
         padding-top: 5rem;
     }
+
+    .main-container-signup{
+        min-height: 132vh!important;
+    }
 }
 
-@media screen and (max-width: 767px) {
-    #forgot-pass{
-        padding-top: 1rem;
+
+@media screen and (max-width: 490px) {
+    .main-container-signup{
+        min-height: 135vh!important;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .main-container-signup{
+        min-height: 150vh!important;
     }
 }

@@ -56,7 +56,7 @@ export default function MainContent(){
                                     variant="link"
                                     className="position-absolute bottom-0 end-0"
                                     id="goal-sec-btn"
-                                    href="/#about">Learn more!</Button>
+                                    href="/about">Learn more!</Button>
                             </div>
                         </Col>
                     </Row>

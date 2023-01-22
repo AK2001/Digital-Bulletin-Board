@@ -1,0 +1,13 @@
+.about-page{
+    aspect-ratio: 960/300;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('../../assets/sec2_full.png');
+}
+
+.about-contents{
+    padding-top:15%;
+    text-align: center;
+}

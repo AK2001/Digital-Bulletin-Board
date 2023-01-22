@@ -7,20 +7,35 @@
     background-image: url('../../../assets/sec1_full.png');
 }
 
-@media screen and (max-width: 991px) {
-    main{
-        padding-top: 5rem;
-    }
+.input-validation-msg{
+    color:gray!important;
+    display:none;
 }
 
 @media screen and (max-width: 767px) {
-    #forgot-pass{
-        padding-top: 1rem;
+    main{
+        padding-top: 5rem;
+    }
+
+    .main-container-login{
+        min-height: 132vh!important;
     }
 }
+
+
+@media screen and (max-width: 490px) {
+    .main-container-login{
+        min-height: 135vh!important;
+    }
+}
+
 @media screen and (max-width: 320px) {
+    .main-container-login{
+        min-height: 150vh!important;
+    }
+
     #register-msg{
-        padding-left: 0!important;
+        padding:0!important;
     }
 }
 

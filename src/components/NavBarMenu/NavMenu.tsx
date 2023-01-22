@@ -20,7 +20,7 @@ export default function NavMenu({title="About"}:MenuProps) {
           {/*Nav links*/}
           <Nav className="me-auto">
             <Nav.Link id="nav-link" href="#browseTasks">Browse Tasks</Nav.Link>
-            <Nav.Link id="nav-link" href="#about">{title}</Nav.Link>
+            <Nav.Link id="nav-link" href="/about">{title}</Nav.Link>
           </Nav>
 
           {/*Nav search bar*/}

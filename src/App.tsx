@@ -6,6 +6,7 @@ import MainContent from './components/MainContent/MainContent';
 import axios from "axios";
 import Login from "./components/LoginSignup/Login/Login";
 import Signup from "./components/LoginSignup/Signup/Signup";
+import AboutPage from "./components/AboutPage/AboutPage";
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
             <Route path="/" element={<MainContent />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/about" element={<AboutPage/>} />
         </Routes>
 
         {/*<h1>React and flask</h1>*/}

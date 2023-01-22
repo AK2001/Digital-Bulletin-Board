@@ -19,18 +19,5 @@ export default function Task({title,desc}:TaskProps){
                 <Button variant={"link"}>Go to task</Button>
             </div>
         </div>
-
-        // <Container fluid className="border task-container">
-        //     <Row>
-        //         <p>{title}</p>
-        //     </Row>
-        //     <Row id="task-desc">
-        //         <p>{desc}</p>
-        //     </Row>
-        //
-        //     <Row>
-        //         <Button variant={"link"}>Go to task</Button>
-        //     </Row>
-        // </Container>
     );
 }
