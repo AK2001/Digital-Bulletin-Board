@@ -9,17 +9,24 @@ import {
 } from 'mdb-react-ui-kit';
 import Button from "react-bootstrap/Button";
 import {useState} from "react";
+import { useNavigate } from "react-router-dom";
 import "../InputValidation/ValidateUserInputs";
 import {CheckLoginInputs, ValidateLoginInputs} from "../InputValidation/ValidateUserInputs";
 import axios from "axios";
 
-export default function Login(){
+export default function Login(props: { setToken: (arg: any) => void; }){
+
+    // Navigate hook to redirect user to their profile
+    const navigate = useNavigate();
 
     // Holds login data for the user, their email and password
     const [loginData, setLoginData] = useState({
         userEmail: "",
         userPass: "",
     })
+
+    // Holds the login token given by the backend
+    const token = sessionStorage.getItem("token");
 
     // Handles input change and saves input to component state
     const handleInputChange = (event: { target: { name: any; value: any; }; }) => {
@@ -34,12 +41,28 @@ export default function Login(){
     }
 
     // Handles submit action of form
-    const handleSubmit = (event: { preventDefault: () => void; }) => {
+    async function handleSubmit(event: { preventDefault: () => void; }){
+        event.preventDefault();
         if (ValidateLoginInputs(loginData.userEmail, loginData.userPass)){
-            return true;
+
+            const data = JSON.stringify({
+                "email": loginData.userEmail,
+                "password": loginData.userPass
+            })
+
+            await axios.post("/api/token", data, {
+                headers : {"Content-Type": "application/json"}
+            })
+                .then(res =>{
+                    // sessionStorage.setItem("token", res.data.access_token);
+                    props.setToken(res.data.access_token);
+                    navigate("/profile");
+                }).catch(err => {
+                    console.log(err)
+                })
+
         }else{
-            event.preventDefault();
-            return false;
+            console.log(loginData)
         }
     }
     

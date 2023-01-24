@@ -5,12 +5,25 @@ import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import {ImSearch} from 'react-icons/im';
 import Button from 'react-bootstrap/Button'
+import axios from "axios";
 
-type MenuProps = {
-  title?: string;
-}
+export default function NavMenu(props: { token: () => void; }) {
 
-export default function NavMenu({title="About"}:MenuProps) {
+  async function logMeOut() {
+    await axios({
+      method: "POST",
+      url:"/api/logout",
+    })
+        .then((response) => {
+          props.token()
+        }).catch((error) => {
+      if (error.response) {
+        console.log(error.response)
+        console.log(error.response.status)
+        console.log(error.response.headers)
+      }
+    })}
+
   return (
     <Navbar className="nav-menu fs-5 py-sm-3" collapseOnSelect expand="lg" fixed="top" variant="dark">
       <Container fluid>
@@ -20,7 +33,7 @@ export default function NavMenu({title="About"}:MenuProps) {
           {/*Nav links*/}
           <Nav className="me-auto">
             <Nav.Link id="nav-link" href="#browseTasks">Browse Tasks</Nav.Link>
-            <Nav.Link id="nav-link" href="/about">{title}</Nav.Link>
+            <Nav.Link id="nav-link" href="/about">About</Nav.Link>
           </Nav>
 
           {/*Nav search bar*/}
@@ -43,17 +56,26 @@ export default function NavMenu({title="About"}:MenuProps) {
 
           {/*Signup/login buttons*/}
           <Nav className="ms-auto">
-            <Button
-                href = "/login"
-                className="login-btn">
-              Log in
-            </Button>
+            {localStorage.getItem("token") !== null ?
+                <Button
+                    onClick={logMeOut}>
+                  Logout
+                </Button>
+                :
+                (<>
+                      <Button
+                          href = "/login"
+                          className="login-btn">
+                        Log in
+                      </Button>
 
-            <Button
-                href = "/signup"
-                className="register-btn">
-              Sign Up!
-            </Button>
+                      <Button
+                          href = "/signup"
+                          className="register-btn">
+                        Sign Up!
+                      </Button>
+                    </>
+                )}
           </Nav>
         </Navbar.Collapse>
       </Container>
