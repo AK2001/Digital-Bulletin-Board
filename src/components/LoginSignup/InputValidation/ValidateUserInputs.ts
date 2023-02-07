@@ -1,4 +1,11 @@
+// ValidateUserInputs.ts helps with certain actions that need to happen in order to ensure valid input
+// in both login and signup process. The following methods perform one of TWO major tasks
+// TASK A: Perform a regular expression check on the inputs given and return true on success
+// TASK B: display/hide additional "helper" texts present in Login.tsx and Signup.tsx that are used
+// to inform users of valid inputs.
 
+
+// Methods that help "decide" which helper methods to call
 export function CheckLoginInputs(inputName: string, inputValue: string){
     if (inputName === "userEmail"){
         ValidateEmailFormat(inputValue)
@@ -40,6 +47,9 @@ export function CheckOrganizationSignupInputs(inputName: string, inputValue: any
 export function ValidateOrganizationSignupInputs(orgName: string, orgTIN: number, email: string, password: string){
     return ValidateNameFormat(orgName) && ValidateTINFormat(orgTIN) && ValidateEmailFormat(email) && ValidatePasswordFormat(password);
 }
+
+// The following methods are used by the function above whenever needed.
+// These methods perform the two tasks described at the top of the file.
 
 function ValidateNameFormat(inputValue: string){
     let nameREGEX = /^[a-zA-Z ]+$/

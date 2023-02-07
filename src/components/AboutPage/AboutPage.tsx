@@ -2,6 +2,7 @@ import "./AboutPage.css"
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 
+// AboutPage component. Displays the about page.
 export default function AboutPage(){
     return (
         <main className="min-vh-100 about-page custom-font">

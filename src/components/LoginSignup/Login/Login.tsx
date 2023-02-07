@@ -1,31 +1,16 @@
 import '../LoginSignup.css';
-import {useEffect, useState} from "react";
-import {Navigate, useNavigate} from "react-router-dom";
+import {useContext, useState} from "react";
+import {CheckLoginInputs, ValidateLoginInputs} from "../InputValidation/ValidateUserInputs";
 import {MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput} from 'mdb-react-ui-kit';
 import Button from "react-bootstrap/Button";
-import axios from "axios";
-import {CheckLoginInputs, ValidateLoginInputs} from "../InputValidation/ValidateUserInputs";
+import AuthContext from "../../../AuthContextProvider";
 
+// Login component. Used to display and handle the login form.
 export default function Login(){
 
-    // Variable to hold whether the user is logged in
-    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-
-    // Makes an API call to check whether user is logged in
-    // If user has logged in (i.e., an HTTP-only cookie has been created
-    // then the GET call, returns with a response status of 200 meaning
-    // the user has logged in the system
-    useEffect(() => {
-        axios.get('/api/checkToken')
-            .then(() => setIsUserLoggedIn(true))
-            .catch(error => {
-                if (error.response.status === 401) void(0)
-                else console.log(error)
-            });
-    }, [])
-
-    // Navigate hook to redirect user to their profile page
-    const navigate = useNavigate();
+    // Takes login function as defined withing the AuthContext in AuthContextProvider.tsx
+    // Used to log in user to the system and establish an authorized connection
+    const {login} = useContext(AuthContext)
 
     // Holds login data for the user, their email and password
     const [loginData, setLoginData] = useState({
@@ -41,11 +26,10 @@ export default function Login(){
             [event.target.name]: event.target.value
         })
 
-        // checkInputFormat(event.target.name, event.target.value);
         CheckLoginInputs(event.target.name, event.target.value);
     }
 
-    // Handles submit action of form
+    // Handles submit action of form and calls the login function
     async function handleSubmit(event: { preventDefault: () => void; }){
         event.preventDefault();
         if (ValidateLoginInputs(loginData.userEmail, loginData.userPass)){
@@ -55,27 +39,12 @@ export default function Login(){
                 "password": loginData.userPass
             })
 
-            // If this POST call succeeds, an HTTP-only cookie with an
-            // access token is created and user is navigated to /profile path.
-            await axios.post("/api/token", data, {
-                headers : {"Content-Type": "application/json"}
-            })
-                .then(() =>{
-                    localStorage.setItem("isUserLoggedIn", "true");
-                    localStorage.setItem("userEmail", loginData.userEmail);
-                    navigate("/");
-                }).catch(err => {
-                    console.log(err)
-                })
+            // @ts-ignore
+            await login(data);
 
         }else{
             console.log(loginData)
         }
-    }
-
-    // If user has already logged in, redirect to profile page
-    if (isUserLoggedIn){
-        return <Navigate replace to="/profile" />;
     }
 
     return(

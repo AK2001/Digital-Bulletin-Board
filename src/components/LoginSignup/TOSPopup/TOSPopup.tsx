@@ -6,6 +6,8 @@ type popupProps = {
     onHide: () => void;
 }
 
+// This component is used to display the applications' Terms of Service in a modal form
+// This component is called by the Signup.tsx component.
 export default function TOSPopup(props: popupProps){
     return (
         <Modal

@@ -1,17 +1,12 @@
 import '../LoginSignup.css';
 import {MDBCard, MDBCardBody, MDBCheckbox, MDBCol, MDBContainer, MDBInput, MDBRow,MDBTabs, MDBTabsItem, MDBTabsLink, MDBTabsContent, MDBTabsPane} from "mdb-react-ui-kit";
 import Button from "react-bootstrap/Button";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import TOSPopup from "../TOSPopup/TOSPopup";
 import "../InputValidation/ValidateUserInputs";
-import {
-    CheckCitizenSignupInputs,
-    CheckOrganizationSignupInputs,
-    ValidateCitizenSignupInputs, ValidateOrganizationSignupInputs
-} from "../InputValidation/ValidateUserInputs";
-import {Navigate} from "react-router-dom";
+import { CheckCitizenSignupInputs, CheckOrganizationSignupInputs, ValidateCitizenSignupInputs, ValidateOrganizationSignupInputs } from "../InputValidation/ValidateUserInputs";
 
-
+// Signup component. Used to display the signup form and perform the signup process.
 export default function Signup(){
 
     // Holds register data for the user (citizen)
@@ -52,7 +47,7 @@ export default function Signup(){
         }
     }
 
-    // Handles submit action of form
+    // Handles submit action of forms
     const handleCitizenSubmit = (event: { preventDefault: () => void; }) => {
         if (ValidateCitizenSignupInputs(userData.userFirstName, userData.userLastName, userData.userEmail, userData.userPass)){
             return true;
@@ -85,11 +80,6 @@ export default function Signup(){
             return;
         }
         setRegisterOption(value);
-    }
-
-    // If user has already logged in, redirect to profile page
-    if (localStorage.getItem("isUserLoggedIn") === "true"){
-        return <Navigate replace to="/profile" />;
     }
 
     return(
@@ -322,17 +312,3 @@ export default function Signup(){
         </main>
     );
 }
-//
-// <MDBRow>
-//     <MDBCol id="">
-//         <Button className="w-100" variant={"primary"}>
-//             <b>Sign up</b>
-//         </Button>
-//     </MDBCol>
-//
-//     <MDBCol id="">
-//         <Button className="w-100" variant={"primary"}>
-//             <b>Sign up</b>
-//         </Button>
-//     </MDBCol>
-// </MDBRow>

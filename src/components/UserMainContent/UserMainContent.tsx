@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+// UserMainContent component. Used to display the main content to users that have logged in the application.
 export default function UserMainContent(){
     return (
         <main className="min-vh-100 about-page custom-font">

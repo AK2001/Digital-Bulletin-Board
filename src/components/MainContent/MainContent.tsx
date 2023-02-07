@@ -8,15 +8,9 @@ import goalIMG from "../../assets/goal_img.png";
 // @ts-ignore
 import owlIMG from "../../assets/owl.png";
 import Task from "../Task/Task";
-import UserMainContent from "../UserMainContent/UserMainContent";
 
+// MainContent component. Used to display the main content to users that have not yet logged in the application.
 export default function MainContent(){
-
-    // If user has already logged in, redirect to profile page
-    if (localStorage.getItem("isUserLoggedIn") === "true"){
-        // return <Navigate replace to="/profile" />;
-        return <UserMainContent />
-    }
 
     return (
         <main className="scroll-container custom-font">

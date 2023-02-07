@@ -1,5 +1,4 @@
 import './NavMenu.css';
-import {Navigate, useNavigate} from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,35 +7,18 @@ import {ImSearch} from 'react-icons/im';
 import {MdOutlineAccountCircle} from 'react-icons/md';
 import Button from 'react-bootstrap/Button'
 import AuthContext from "../../AuthContextProvider"
-import axios from "axios";
 import {useContext} from "react";
 
+// NavMenu component serves as the navigation menu of the frontend.
 export default function NavMenu() {
 
-  // Navigate hook to redirect user to homepage after logout
-  const navigate = useNavigate();
-
-  // Log out method, makes a POST call on /api/logout API, which deletes
-  // the HTTP-only cookie created by the backend, so the user no longer is
-  // connected to the system, also upon success navigates user to /login
-  async function logMeOut() {
-    await axios({
-      method: "POST",
-      url:"/api/logout",
-    })
-        .then(() => {
-          localStorage.removeItem("isUserLoggedIn");
-          localStorage.removeItem("userEmail");
-          navigate("/login");
-        }).catch((error) => {
-      if (error.response) {
-        console.log(error.response)
-        console.log(error.response.status)
-        console.log(error.response.headers)
-      }
-    })}
+  // Takes both user variable and logout function as defined withing the AuthContext in AuthContextProvider.tsx
+  // User -- is used to "check" whether the user has logged in the system and if so, displays the appropriated choices in the navbar
+  // Logout -- is used to logout the user from the system, i.e., delete the HTTP-only cookie that exists and relevant localStorage items (See AuthContextProvider.tsx for implementation)
+  const { user, logout } = useContext(AuthContext);
 
   return (
+
     <Navbar className="nav-menu fs-5 py-sm-3" collapseOnSelect expand="lg" fixed="top" variant="dark">
       <Container fluid>
         <Navbar.Brand id="nav-brand" href="/"><strong>Industrial Studies</strong></Navbar.Brand>
@@ -68,7 +50,8 @@ export default function NavMenu() {
 
           {/*Signup/Login/Logout/Account buttons*/}
           <Nav className="ms-auto">
-            {localStorage.getItem("isUserLoggedIn")==="true"?
+            {/*If a user has logged in the system then...*/}
+            {user ?
                 (<>
 
                   <a href="/profile" className="account-btn">
@@ -79,7 +62,7 @@ export default function NavMenu() {
                   </a>
 
                   <Button
-                      onClick={logMeOut}
+                      onClick={() => logout()}
                       className="register-btn">
                     Logout
                   </Button>

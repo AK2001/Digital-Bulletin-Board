@@ -1,16 +1,19 @@
 import "./UserProfile.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import {useContext, useState} from "react";
 import axios from "axios";
+import AuthContext from "../../AuthContextProvider";
 
+// User profile. The user's profile, where they can see various see and also edit their personal information
 export default function UserProfile(){
 
     const [profileData, setProfileData] = useState({
         profile_name: "",
         about_me: ""
     })
+
+    const { user } = useContext(AuthContext);
 
     async function getData(){
         await axios.get("/profile"). then((response) => {
@@ -23,11 +26,6 @@ export default function UserProfile(){
         }).catch(err =>{
             console.log(err)
         })
-    }
-
-    // If user has NOT logged in, redirects them to login page
-    if (localStorage.getItem("isUserLoggedIn") !== "true"){
-        return <Navigate replace to="/login" />;
     }
 
     return (
