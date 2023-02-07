@@ -1,22 +1,30 @@
-import './Login.css'
-import {
-    MDBContainer,
-    MDBRow,
-    MDBCol,
-    MDBCard,
-    MDBCardBody,
-    MDBInput
-} from 'mdb-react-ui-kit';
+import '../LoginSignup.css';
+import {useEffect, useState} from "react";
+import {Navigate, useNavigate} from "react-router-dom";
+import {MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput} from 'mdb-react-ui-kit';
 import Button from "react-bootstrap/Button";
-import {useState} from "react";
-import { useNavigate } from "react-router-dom";
-import "../InputValidation/ValidateUserInputs";
-import {CheckLoginInputs, ValidateLoginInputs} from "../InputValidation/ValidateUserInputs";
 import axios from "axios";
+import {CheckLoginInputs, ValidateLoginInputs} from "../InputValidation/ValidateUserInputs";
 
-export default function Login(props: { setToken: (arg: any) => void; }){
+export default function Login(){
 
-    // Navigate hook to redirect user to their profile
+    // Variable to hold whether the user is logged in
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
+    // Makes an API call to check whether user is logged in
+    // If user has logged in (i.e., an HTTP-only cookie has been created
+    // then the GET call, returns with a response status of 200 meaning
+    // the user has logged in the system
+    useEffect(() => {
+        axios.get('/api/checkToken')
+            .then(() => setIsUserLoggedIn(true))
+            .catch(error => {
+                if (error.response.status === 401) void(0)
+                else console.log(error)
+            });
+    }, [])
+
+    // Navigate hook to redirect user to their profile page
     const navigate = useNavigate();
 
     // Holds login data for the user, their email and password
@@ -24,9 +32,6 @@ export default function Login(props: { setToken: (arg: any) => void; }){
         userEmail: "",
         userPass: "",
     })
-
-    // Holds the login token given by the backend
-    const token = sessionStorage.getItem("token");
 
     // Handles input change and saves input to component state
     const handleInputChange = (event: { target: { name: any; value: any; }; }) => {
@@ -50,13 +55,15 @@ export default function Login(props: { setToken: (arg: any) => void; }){
                 "password": loginData.userPass
             })
 
+            // If this POST call succeeds, an HTTP-only cookie with an
+            // access token is created and user is navigated to /profile path.
             await axios.post("/api/token", data, {
                 headers : {"Content-Type": "application/json"}
             })
-                .then(res =>{
-                    // sessionStorage.setItem("token", res.data.access_token);
-                    props.setToken(res.data.access_token);
-                    navigate("/profile");
+                .then(() =>{
+                    localStorage.setItem("isUserLoggedIn", "true");
+                    localStorage.setItem("userEmail", loginData.userEmail);
+                    navigate("/");
                 }).catch(err => {
                     console.log(err)
                 })
@@ -65,7 +72,12 @@ export default function Login(props: { setToken: (arg: any) => void; }){
             console.log(loginData)
         }
     }
-    
+
+    // If user has already logged in, redirect to profile page
+    if (isUserLoggedIn){
+        return <Navigate replace to="/profile" />;
+    }
+
     return(
         <main className="min-vh-100 main-container-login">
 
@@ -123,7 +135,7 @@ export default function Login(props: { setToken: (arg: any) => void; }){
 
                                     <MDBRow className='mb-4'>
                                         <MDBCol className='d-flex justify-content-center'>
-                                            <a href='#forgotpass' id="forgot-pass">Forgot password?</a>
+                                            <a href='#forgotPass' id="forgot-pass">Forgot password?</a>
                                         </MDBCol>
                                     </MDBRow>
 

@@ -67,6 +67,17 @@
     border-color: #1190ff !important;
 }
 
+.account-btn{
+    text-decoration: none;
+    padding-top: 2px;
+    color: #ffffff;
+}
+
+.account-btn:hover,
+.account-btn:link{
+    color: #e5e5e5;
+}
+
 @media screen and (max-width: 1200px) {
   .nav-search-bar{
       margin-right: 0;

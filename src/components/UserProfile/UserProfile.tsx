@@ -1,10 +1,11 @@
+import "./UserProfile.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import {useState} from "react";
+import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 
-export default function UserProfile(props: { token: string|null; setToken: (arg: any) => any; }){
+export default function UserProfile(){
 
     const [profileData, setProfileData] = useState({
         profile_name: "",
@@ -12,13 +13,9 @@ export default function UserProfile(props: { token: string|null; setToken: (arg:
     })
 
     async function getData(){
-        await axios.get("/profile", {
-            headers: {
-            "Authorization" : "Bearer " + props.token
-            }
-        }). then((response) => {
+        await axios.get("/profile"). then((response) => {
             const res = response.data
-            res.access_token && props.setToken(res.access_token)
+
             setProfileData({
                 profile_name: res.name,
                 about_me: res.about
@@ -28,13 +25,13 @@ export default function UserProfile(props: { token: string|null; setToken: (arg:
         })
     }
 
-    // If user has not logged in, redirect to log in page
-    if (localStorage.getItem("token") == null){
+    // If user has NOT logged in, redirects them to login page
+    if (localStorage.getItem("isUserLoggedIn") !== "true"){
         return <Navigate replace to="/login" />;
     }
 
     return (
-        <main className="min-vh-100 about-page custom-font">
+        <main className="min-vh-100 custom-font user-profile-container">
             <Container className="vh-100">
                 <Row className="pt-5">
                     <h1>This is your profile, enjoy</h1>
@@ -45,6 +42,7 @@ export default function UserProfile(props: { token: string|null; setToken: (arg:
                         <p>About me: {profileData.about_me}</p>
                     </div>
                     }
+
                 </Row>
             </Container>
         </main>

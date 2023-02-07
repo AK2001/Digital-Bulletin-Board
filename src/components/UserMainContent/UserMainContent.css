@@ -1,0 +1,12 @@
+.user-main-content-container{
+    padding-top:11rem;
+}
+
+.user-name{
+    color: #80e8ff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.82);
+}
+
+.latest-tasks h4{
+    padding-top:2rem;
+}

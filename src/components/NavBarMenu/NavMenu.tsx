@@ -1,21 +1,33 @@
 import './NavMenu.css';
+import {Navigate, useNavigate} from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import {ImSearch} from 'react-icons/im';
+import {MdOutlineAccountCircle} from 'react-icons/md';
 import Button from 'react-bootstrap/Button'
+import AuthContext from "../../AuthContextProvider"
 import axios from "axios";
+import {useContext} from "react";
 
-export default function NavMenu(props: { token: () => void; }) {
+export default function NavMenu() {
 
+  // Navigate hook to redirect user to homepage after logout
+  const navigate = useNavigate();
+
+  // Log out method, makes a POST call on /api/logout API, which deletes
+  // the HTTP-only cookie created by the backend, so the user no longer is
+  // connected to the system, also upon success navigates user to /login
   async function logMeOut() {
     await axios({
       method: "POST",
       url:"/api/logout",
     })
-        .then((response) => {
-          props.token()
+        .then(() => {
+          localStorage.removeItem("isUserLoggedIn");
+          localStorage.removeItem("userEmail");
+          navigate("/login");
         }).catch((error) => {
       if (error.response) {
         console.log(error.response)
@@ -54,13 +66,24 @@ export default function NavMenu(props: { token: () => void; }) {
             </Form>
           </Nav>
 
-          {/*Signup/login buttons*/}
+          {/*Signup/Login/Logout/Account buttons*/}
           <Nav className="ms-auto">
-            {localStorage.getItem("token") !== null ?
-                <Button
-                    onClick={logMeOut}>
-                  Logout
-                </Button>
+            {localStorage.getItem("isUserLoggedIn")==="true"?
+                (<>
+
+                  <a href="/profile" className="account-btn">
+                    View Account
+                    <span>
+                      <MdOutlineAccountCircle className="ps-1 pb-1" size={25}/>
+                    </span>
+                  </a>
+
+                  <Button
+                      onClick={logMeOut}
+                      className="register-btn">
+                    Logout
+                  </Button>
+                </>)
                 :
                 (<>
                       <Button

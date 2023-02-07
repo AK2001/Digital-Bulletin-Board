@@ -11,7 +11,7 @@ export default function AboutPage(){
                 </Row>
                 <Row>
                     <p className="fs-4">The Digital Bulletin Board project was created to promote charitable actions to happen more frequently in the municipality
-                    of Athens. The project was created by a team of four college students, studying in AthTech College in Athens, Greece.<br/><br/>
+                    of Athens. The project was created by a team of four college students, studying at AthTech College in Athens, Greece.<br/><br/>
                     The Team:<br/></p>
                     <ul className="fs-4">
                         <li>Alexandros Kelaiditis</li>

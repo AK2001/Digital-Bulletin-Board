@@ -1,7 +1,7 @@
-import './Signup.css'
+import '../LoginSignup.css';
 import {MDBCard, MDBCardBody, MDBCheckbox, MDBCol, MDBContainer, MDBInput, MDBRow,MDBTabs, MDBTabsItem, MDBTabsLink, MDBTabsContent, MDBTabsPane} from "mdb-react-ui-kit";
 import Button from "react-bootstrap/Button";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import TOSPopup from "../TOSPopup/TOSPopup";
 import "../InputValidation/ValidateUserInputs";
 import {
@@ -9,6 +9,7 @@ import {
     CheckOrganizationSignupInputs,
     ValidateCitizenSignupInputs, ValidateOrganizationSignupInputs
 } from "../InputValidation/ValidateUserInputs";
+import {Navigate} from "react-router-dom";
 
 
 export default function Signup(){
@@ -84,6 +85,11 @@ export default function Signup(){
             return;
         }
         setRegisterOption(value);
+    }
+
+    // If user has already logged in, redirect to profile page
+    if (localStorage.getItem("isUserLoggedIn") === "true"){
+        return <Navigate replace to="/profile" />;
     }
 
     return(

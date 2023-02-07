@@ -1,11 +1,26 @@
+.main-container-login{
+    aspect-ratio: 960/300;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('../../assets/sec1_full.png');
+}
+
 .main-container-signup{
     aspect-ratio: 960/300;
     width: 100%;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-image: url('../../../assets/sec4_full.png');
+    background-image: url('../../assets/sec4_full.png');
 }
+
+.input-validation-msg{
+    color:gray!important;
+    display:none;
+}
+
 
 /* Remove arrows from number input for TIN*/
 input::-webkit-outer-spin-button,
@@ -24,6 +39,10 @@ input[type=number]{
         padding-top: 5rem;
     }
 
+    .main-container-login{
+        min-height: 132vh!important;
+    }
+
     .main-container-signup{
         min-height: 132vh!important;
     }
@@ -31,13 +50,27 @@ input[type=number]{
 
 
 @media screen and (max-width: 490px) {
+    .main-container-login{
+        min-height: 135vh!important;
+    }
+
     .main-container-signup{
         min-height: 135vh!important;
     }
+
 }
 
 @media screen and (max-width: 320px) {
+    .main-container-login{
+        min-height: 150vh!important;
+    }
+
+    #register-msg{
+        padding:0!important;
+    }
+
     .main-container-signup{
         min-height: 150vh!important;
     }
+
 }

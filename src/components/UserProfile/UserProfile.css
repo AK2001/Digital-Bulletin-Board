@@ -1,0 +1,9 @@
+.user-profile-container{
+    padding-top:11rem;
+    aspect-ratio: 960/300;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('../../assets/sec1_full.png');
+}
