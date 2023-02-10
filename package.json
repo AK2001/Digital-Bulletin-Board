@@ -13,6 +13,7 @@
     "@types/react-dom": "^18.0.9",
     "axios": "^1.2.1",
     "bootstrap": "^5.2.3",
+    "js-cookie": "^3.0.1",
     "mdb-react-ui-kit": "^5.0.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",
@@ -47,5 +48,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.2"
   }
 }

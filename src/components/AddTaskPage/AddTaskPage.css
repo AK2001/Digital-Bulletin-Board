@@ -1,0 +1,8 @@
+.add-task-container{
+    padding-top: 12rem;
+}
+
+.input-validation-msg{
+    color:gray!important;
+    display:none;
+}

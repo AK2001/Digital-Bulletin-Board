@@ -3,10 +3,10 @@ import {useContext, useState} from "react";
 import {CheckLoginInputs, ValidateLoginInputs} from "../InputValidation/ValidateUserInputs";
 import {MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput} from 'mdb-react-ui-kit';
 import Button from "react-bootstrap/Button";
-import AuthContext from "../../../AuthContextProvider";
+import AuthContext from "../../../helpers/AuthContextProvider";
 
-// Login component. Used to display and handle the login form.
-export default function Login(){
+// LoginPage component. Used to display and handle the login form.
+export default function LoginPage(){
 
     // Takes login function as defined withing the AuthContext in AuthContextProvider.tsx
     // Used to log in user to the system and establish an authorized connection
@@ -38,11 +38,10 @@ export default function Login(){
                 "email": loginData.userEmail,
                 "password": loginData.userPass
             })
-
-            // @ts-ignore
-            await login(data);
+            login(data)
 
         }else{
+            console.log("Wrong call")
             console.log(loginData)
         }
     }
@@ -104,7 +103,7 @@ export default function Login(){
 
                                     <MDBRow className='mb-4'>
                                         <MDBCol className='d-flex justify-content-center'>
-                                            <a href='#forgotPass' id="forgot-pass">Forgot password?</a>
+                                            <a href='#' id="forgot-pass">Forgot password?</a>
                                         </MDBCol>
                                     </MDBRow>
 

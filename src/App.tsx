@@ -1,14 +1,20 @@
 import './App.css';
-import React, {useContext} from "react";
-import {Routes, Route, Navigate} from "react-router-dom";
+import React from "react";
+import {Routes, Route} from "react-router-dom";
 import NavMenu from './components/NavBarMenu/NavMenu';
-import MainContent from './components/MainContent/MainContent';
-import Login from "./components/LoginSignup/Login/Login";
-import Signup from "./components/LoginSignup/Signup/Signup";
+import MainContentPage from './components/MainContentPage/MainContentPage';
+import LoginPage from "./components/LoginSignup/LoginPage/LoginPage";
+import SignupPage from "./components/LoginSignup/SignupPage/SignupPage";
 import AboutPage from "./components/AboutPage/AboutPage";
-import UserProfile from "./components/UserProfile/UserProfile";
+import UserProfilePage from "./components/UserProfilePage/UserProfilePage";
 import UserMainContent from "./components/UserMainContent/UserMainContent";
-import AuthContext, {AuthContextProvider} from "./AuthContextProvider";
+import AddTaskPage from "./components/AddTaskPage/AddTaskPage";
+import {AuthContextProvider} from "./helpers/AuthContextProvider";
+import ProtectedRoute from "./helpers/ProtectedRoute";
+import BrowseTasksPage from "./components/BrowseTasksPage/BrowseTasksPage";
+import TaskPage from "./components/TaskPage/TaskPage";
+
+
 function App() {
 
     // const location = useLocation()
@@ -29,29 +35,45 @@ function App() {
 
                   <Route path='/' element={
                       <ProtectedRoute accessBy={"non-authenticated"} altComponent={<UserMainContent />}>
-                          <MainContent />
+                          <MainContentPage />
                       </ProtectedRoute>
                   } />
 
                   <Route path='/login' element={
                       <ProtectedRoute accessBy={"non-authenticated"}>
-                          <Login />
+                          <LoginPage />
                       </ProtectedRoute>
                   } />
 
                   <Route path='/signup' element={
                       <ProtectedRoute accessBy={"non-authenticated"}>
-                          <Signup />
+                          <SignupPage />
                       </ProtectedRoute>
                   } />
+
+
+                  <Route path="/browseTasks">
+                      <Route index element={<BrowseTasksPage />} />
+                      <Route path=":taskId" element={<TaskPage />} />
+                  </Route>
+
+                  {/*<Route path="/browseTasks" element={<BrowseTasksPage />} />*/}
+                  {/*<Route path="/browseTasks/?taskWithId=:taskId" element={<TaskPage />} />*/}
 
                   <Route path="/about" element={<AboutPage />} />
 
                   <Route path='/profile' element={
                       <ProtectedRoute accessBy={"authenticated"} rerouteTo={"/login"}>
-                          <UserProfile />
+                          <UserProfilePage />
                       </ProtectedRoute>
                   } />
+
+                  <Route path='/addTask' element={
+                      <ProtectedRoute accessBy={"authenticated-organization"} rerouteTo={"/login"}>
+                          <AddTaskPage />
+                      </ProtectedRoute>
+                  } />
+
               </Routes>
           </AuthContextProvider>
 
@@ -59,32 +81,5 @@ function App() {
       </div>
     );
 }
-
-interface ProtectedRouteProps{
-    children: JSX.Element,
-    altComponent?: JSX.Element;
-    accessBy: string,
-    rerouteTo?: string
-}
-
-const ProtectedRoute:React.FC<ProtectedRouteProps> = ({ children, altComponent, accessBy , rerouteTo="/"}) => {
-
-    const { user } = useContext(AuthContext);
-
-    if (accessBy === "non-authenticated") {
-        if (!user) {
-            return children;
-        }
-
-    } else if (accessBy === "authenticated") {
-        if (user) {
-            return children;
-        }
-    }
-
-    if (altComponent !== undefined) return altComponent;
-
-    return <Navigate to={rerouteTo}></Navigate>;
-};
 
 export default App;

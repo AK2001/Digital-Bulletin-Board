@@ -1,13 +1,16 @@
 import '../LoginSignup.css';
 import {MDBCard, MDBCardBody, MDBCheckbox, MDBCol, MDBContainer, MDBInput, MDBRow,MDBTabs, MDBTabsItem, MDBTabsLink, MDBTabsContent, MDBTabsPane} from "mdb-react-ui-kit";
 import Button from "react-bootstrap/Button";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import TOSPopup from "../TOSPopup/TOSPopup";
 import "../InputValidation/ValidateUserInputs";
 import { CheckCitizenSignupInputs, CheckOrganizationSignupInputs, ValidateCitizenSignupInputs, ValidateOrganizationSignupInputs } from "../InputValidation/ValidateUserInputs";
+import AuthContext from "../../../helpers/AuthContextProvider";
 
-// Signup component. Used to display the signup form and perform the signup process.
-export default function Signup(){
+// SignupPage component. Used to display the signup form and perform the signup process.
+export default function SignupPage(){
+
+    const {signup} = useContext(AuthContext);
 
     // Holds register data for the user (citizen)
     const [userData, setUserData] = useState({
@@ -48,22 +51,43 @@ export default function Signup(){
     }
 
     // Handles submit action of forms
-    const handleCitizenSubmit = (event: { preventDefault: () => void; }) => {
+    const handleCitizenSubmit = async (event: { preventDefault: () => void; }) => {
+        event.preventDefault();
+
         if (ValidateCitizenSignupInputs(userData.userFirstName, userData.userLastName, userData.userEmail, userData.userPass)){
-            return true;
+
+            const data = JSON.stringify({
+                "userFirstName": userData.userFirstName,
+                "userLastName": userData.userLastName,
+                "userEmail": userData.userEmail,
+                "userPass": userData.userPass,
+                "userType": "Citizen"
+            })
+
+            await signup(data);
+
         }else{
-            event.preventDefault();
-            return false;
+            console.log("ERROR" + userData)
         }
     }
 
-    const handleOrganizationSubmit = (event: { preventDefault: () => void; }) => {
+    const handleOrganizationSubmit = async (event: { preventDefault: () => void; }) => {
+        event.preventDefault();
         if (orgData.organizationTIN != null) {
             if (ValidateOrganizationSignupInputs(orgData.organizationName, orgData.organizationTIN, orgData.organizationEmail, orgData.organizationPass)) {
-                return true;
+
+                const data = JSON.stringify({
+                    "organizationName": orgData.organizationName,
+                    "organizationEmail": orgData.organizationEmail,
+                    "organizationPass": orgData.organizationPass,
+                    "organizationTIN": orgData.organizationTIN,
+                    "userType": "Organization",
+                })
+
+                await signup(data);
+
             } else {
-                event.preventDefault();
-                return false;
+                console.log("ERROR" + userData)
             }
         }
     }
@@ -199,7 +223,7 @@ export default function Signup(){
 
                                                 </MDBCol>
                                                 <MDBCol md='4' className='d-flex pt-2'>
-                                                    <a href='#forgotpass' id="forgot-pass">Forgot password?</a>
+                                                    <a href='#' id="forgot-pass">Forgot password?</a>
                                                 </MDBCol>
                                             </MDBRow>
 
@@ -282,7 +306,7 @@ export default function Signup(){
 
                                                 </MDBCol>
                                                 <MDBCol md='4' className='d-flex pt-2'>
-                                                    <a href='#forgotpass' id="forgot-pass">Forgot password?</a>
+                                                    <a href='#' id="forgot-pass">Forgot password?</a>
                                                 </MDBCol>
                                             </MDBRow>
 

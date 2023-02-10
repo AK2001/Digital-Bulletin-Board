@@ -1,4 +1,4 @@
-import "./MainContent.css";
+import "./MainContentPage.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -7,10 +7,10 @@ import Button from "react-bootstrap/Button";
 import goalIMG from "../../assets/goal_img.png";
 // @ts-ignore
 import owlIMG from "../../assets/owl.png";
-import Task from "../Task/Task";
+import React from "react";
 
-// MainContent component. Used to display the main content to users that have not yet logged in the application.
-export default function MainContent(){
+// MainContentPage component. Used to display the main content to users that have not yet logged in the application.
+export default function MainContentPage(){
 
     return (
         <main className="scroll-container custom-font">
@@ -68,30 +68,16 @@ export default function MainContent(){
                 <Container className="text-center h-100">
                     <Row className="align-items-center h-100">
                         <Col sm={12}>
-                            <div className="p-4 pb-0 shadow-lg bg-white rounded">
-                                <h1>Take a look!</h1>
-                                <table className="table">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">Ongoing Tasks</th>
-                                        <th scope="col">Completed Tasks</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><Task title={"task1"} desc={"The feelgood org. collects clothes at St.John church for the homeless of the area"}/></td>
-                                        <td><Task title={"task1"} desc={"The feelgood org. collects clothes at St.John church for the homeless of the area"}/></td>
-                                    </tr>
-                                    <tr>
-                                        <td><Task title={"task2"} desc={"The friends of the forest want volunteers to plant more than 100000 trees in athens at 29/4/2023"}/></td>
-                                        <td><Task title={"task3"} desc={"Small description"}/></td>
-                                    </tr>
-                                    <tr>
-                                        <td><Task title={"task3"} desc={"Small description"}/></td>
-                                        <td><Task title={"task2"} desc={"The friends of the forest want volunteers to plant more than 100000 trees in athens at 29/4/2023"}/></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                            <div className="p-5 shadow-lg bg-white rounded">
+                                <h1>Take a look for yourself!</h1>
+                                <p className="fs-4">
+                                    <a className="section-3-link" href="/browseTasks">Browse through</a>
+                                 &nbsp;the many tasks that have already been published in Digital Bulletin Board.
+                                    Be sure, to check each task out for details on how <b>you</b> too can contribute
+                                    and be part of a greater community <span role="img">😃</span>!
+                                </p>
+
+                                <Button variant={"outline-info"} size={"lg"}>Take me there</Button>
                             </div>
                         </Col>
                     </Row>
@@ -102,13 +88,13 @@ export default function MainContent(){
                 <Container className="text-center h-100">
                     <Row className="align-items-center h-100">
                         <Col sm={12}>
-                            <div className="p-4 shadow-lg bg-white rounded">
+                            <div className="p-5 shadow-lg bg-white rounded">
                                 <h1>Interested in contributing?</h1>
                                 <p>Thanks to the Athens Bulletin Board <u><strong>anyone</strong></u> can
                                     have a positive contribution to their municipality.</p>
-                                <Button href = "/login">Login</Button>
+                                <Button href = "/login" className="register-btn">Login</Button>
                                 <span id="contribute-label">OR</span>
-                                <Button href = "/signup">Signup</Button>
+                                <Button href = "/signup" className="register-btn">Signup</Button>
                             </div>
                         </Col>
                     </Row>

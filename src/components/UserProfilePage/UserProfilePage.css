@@ -1,0 +1,11 @@
+.profile-contents{
+    padding-top:8rem;
+}
+
+
+.add-task-btn{
+    padding: 10px 20px;
+    background-color: #009afa;
+    color: white;
+    border-color: transparent;
+}

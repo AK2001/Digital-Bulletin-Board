@@ -1,0 +1,51 @@
+
+.browse-tasks-main{
+    padding-top: 8rem;
+}
+
+.browse-tasks-header{
+}
+
+.user-message{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.task-filters{
+    padding-top: 1rem;
+    border-bottom: 2px solid rgba(76, 198, 255, 0.8);
+}
+
+.sort-icon{
+    cursor:pointer;
+}
+
+.task-catalog{
+    padding: 1rem;
+}
+
+.task-card{
+    min-height: 15rem!important;
+    background-color: rgba(106, 213, 255, 0.10);
+}
+
+.task-card-title{
+    min-height: 3rem;
+    max-height: 3rem;
+}
+
+.task-card-description{
+    min-height: 5rem;
+    max-height: 5rem;
+}
+
+.task-details-link{
+    color:black;
+}
+
+.task-remove-btn{
+    padding: 2px !important;
+    font-size: smaller;
+}
+

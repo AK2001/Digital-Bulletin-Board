@@ -1,7 +1,7 @@
 // ValidateUserInputs.ts helps with certain actions that need to happen in order to ensure valid input
 // in both login and signup process. The following methods perform one of TWO major tasks
 // TASK A: Perform a regular expression check on the inputs given and return true on success
-// TASK B: display/hide additional "helper" texts present in Login.tsx and Signup.tsx that are used
+// TASK B: display/hide additional "helper" texts present in LoginPage.tsx and SignupPage.tsx that are used
 // to inform users of valid inputs.
 
 
@@ -46,6 +46,16 @@ export function CheckOrganizationSignupInputs(inputName: string, inputValue: any
 
 export function ValidateOrganizationSignupInputs(orgName: string, orgTIN: number, email: string, password: string){
     return ValidateNameFormat(orgName) && ValidateTINFormat(orgTIN) && ValidateEmailFormat(email) && ValidatePasswordFormat(password);
+}
+
+export function CheckAddTaskInputs(inputName: string, inputValue: any){
+    if (inputName === "taskTitle" || inputName === "taskType"){
+        ValidateNameFormat(inputValue);
+    }
+}
+
+export function ValidateAddTaskInputs(taskTitle: string, taskDesc: string, taskType: string){
+    return ValidateNameFormat(taskTitle) && ValidateNameFormat(taskType)
 }
 
 // The following methods are used by the function above whenever needed.

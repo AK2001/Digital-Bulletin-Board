@@ -2,7 +2,7 @@
 .nav-menu {
     /*background-color: #00AEFF;*/
     background: linear-gradient(337deg, rgb(13, 199, 241) 20%, rgb(4, 154, 224) 40%, rgb(14, 181, 229) 58%, rgb(13, 208, 241) 90%);
-    box-shadow: 0px -30px 50px 20px rgba(0,0,0,0.6);
+    box-shadow: 0 -30px 50px 20px rgba(0,0,0,0.6);
 }
 
 #nav-brand{
@@ -19,14 +19,8 @@
     text-decoration: underline!important;
 }
 
-.nav-search-bar {
-    margin-right: 12rem;
-    border-radius: 1em;
-    background: linear-gradient(to right, #FFFFFF, #bcdeff, #41a4ff);
-}
-
-.nav-search-bar:hover{
-    box-shadow: 0 0 0 0.2rem rgba(15, 72, 215, 0.40);
+.splitter{
+    display: none;
 }
 
 .nav-search-bar-input{
@@ -48,6 +42,7 @@
     border-width: 2px;
 }
 
+.logout-btn,
 .register-btn{
     margin-left: 1rem;
     margin-right: 1rem;
@@ -60,7 +55,7 @@
 
 .login-btn:hover{
     text-decoration: underline;
-    box-shadow: 0px 0px 15px -20px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 15px -20px rgba(255, 255, 255, 0.3);
 }
 
 .login-btn:focus {
@@ -78,22 +73,17 @@
     color: #e5e5e5;
 }
 
+
 @media screen and (max-width: 1200px) {
-  .nav-search-bar{
-      margin-right: 0;
-  }
-}
 
-@media screen and (max-width: 1000px) {
-  .register-btn,
-  .login-btn{
-      margin-left: 0;
-      margin-right: 0;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-    .nav-search-bar-input{
-        width: 12rem!important;
+    .button-group{
+        display: inline-block;
+        padding-top:1rem;
     }
+
+    .splitter{
+        display: revert;
+        border: 2px solid beige;
+    }
+
 }
