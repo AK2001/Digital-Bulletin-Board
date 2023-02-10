@@ -395,6 +395,7 @@ def check_token_validity():
     return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
 
 
+# Used to create the Database schema
 with app.app_context():
     db.create_all()
 
