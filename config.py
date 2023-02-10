@@ -19,5 +19,5 @@ class Config:
     JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")  # change to env variable
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=2)
 
-    # configure the SQLite database, relative to the main instance folder
+    # configure the PostgreSQL database, relative to the main instance folder
     SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")

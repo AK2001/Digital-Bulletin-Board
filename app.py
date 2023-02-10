@@ -292,12 +292,10 @@ def delete_task(task_id):
         return jsonify({"msg": "Authorized access for user type 'Citizen"}), 401
 
     task = db.one_or_404(
-        db.select(Task).filter_by(id=task_id),
+        db.select(Task).filter_by(id=task_id, task_publisher_id=current_user.id),
         description=f"Task with id={task_id} does not exist.")
 
     try:
-        current_user.tasks_contributed.remove(task)
-
         db.session.delete(task)
         db.session.commit()
         db.session.close()
