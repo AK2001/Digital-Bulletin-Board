@@ -105,11 +105,14 @@ export default function TaskPage(){
     }
 
     const handleContribute = () => {
-
-        if (taskData.taskPublisherId===userData.id){
-            window.alert("You cannot contribute to a task you have published.")
-        }else{
-            contributeToTask()
+        if (!userData){
+            window.alert("You need to login first in order to contribute to a task")
+        }else {
+            if (taskData.taskPublisherId === userData.id) {
+                window.alert("You cannot contribute to a task you have published.")
+            } else {
+                contributeToTask()
+            }
         }
 
     }

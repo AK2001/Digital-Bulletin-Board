@@ -26,7 +26,7 @@ function UserMessage() {
                 <strong className="me-auto ms-1">{messenger}</strong>
                 <small>Just now</small>
             </Toast.Header>
-            <Toast.Body>Hey there! Thanks for taking the time to contribute <span role="img">😃</span></Toast.Body>
+            <Toast.Body>Hey there! Thanks for taking the time to help your community <span role="img">😃</span></Toast.Body>
         </Toast>
     );
 }
