@@ -8,7 +8,7 @@ To run this app do the following commands
 
 This will download all the dependecies required to run the app, which are present in the **package.json** file.
 
-The run
+Then, execute
 
 ### `npm start`
 
