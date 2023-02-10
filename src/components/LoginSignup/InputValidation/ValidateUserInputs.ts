@@ -54,7 +54,7 @@ export function CheckAddTaskInputs(inputName: string, inputValue: any){
     }
 }
 
-export function ValidateAddTaskInputs(taskTitle: string, taskDesc: string, taskType: string){
+export function ValidateAddTaskInputs(taskTitle: string, taskType: string){
     return ValidateNameFormat(taskTitle) && ValidateNameFormat(taskType)
 }
 

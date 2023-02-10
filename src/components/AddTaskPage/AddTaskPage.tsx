@@ -28,7 +28,7 @@ export default function AddTaskPage(){
     const handleTaskSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault()
 
-        if (ValidateAddTaskInputs(taskData.taskTitle, taskData.taskDescription, taskData.taskType)){
+        if (ValidateAddTaskInputs(taskData.taskTitle, taskData.taskType)){
 
             const data = JSON.stringify({
                 "taskTitle": taskData.taskTitle,

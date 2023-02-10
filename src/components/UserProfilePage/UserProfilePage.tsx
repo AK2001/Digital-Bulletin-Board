@@ -105,12 +105,6 @@ export default function UserProfilePage(){
                             </div>
                         </Row>
                         <Row >
-                            <div>
-                                <h4 className="d-inline-block pe-1 text-info">Password:</h4>
-                                <h4 className="d-inline-block">{userData.user_pass}</h4>
-                            </div>
-                        </Row>
-                        <Row >
                             {userData.user_tin &&
                                 <div>
                                     <h4 className="d-inline-block pe-1 text-info">TIN:</h4>

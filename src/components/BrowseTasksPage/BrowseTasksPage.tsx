@@ -119,9 +119,17 @@ export default function BrowseTasksPage(){
                         </Row>
 
                         <Row className="task-catalog">
-                            {tasksToShow.map((task: taskProps) => (
-                                <TaskCard key={"task" + task.id} taskTitle={task.taskTitle} taskType={task.taskType} taskDesc={task.taskDesc} taskStatus={task.taskState} taskPDate={task.taskDateCreated[0]} taskId={task.id} taskPublisherName={task.taskPublisherName}/>
-                            ))}
+                            {tasksToShow.length===0?
+                                <div>
+                                    <p className="fs-5">There are no tasks published yet!</p>
+                                </div>
+                                :
+                                <>
+                                    {tasksToShow.map((task: taskProps) => (
+                                        <TaskCard key={"task" + task.id} taskTitle={task.taskTitle} taskType={task.taskType} taskDesc={task.taskDesc} taskStatus={task.taskState} taskPDate={task.taskDateCreated[0]} taskId={task.id} taskPublisherName={task.taskPublisherName}/>
+                                    ))}
+                                </>
+                            }
                         </Row>
                     </Col>
                 </Row>
