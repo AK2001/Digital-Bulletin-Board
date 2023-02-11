@@ -3,16 +3,16 @@
 # Used to populate the database with sample data. We pass the db instance and the tables
 # This function runs every time the flask application is run BUT only populates the data ONCE
 def populate_database(db, User, Task):
-    citizen = User(user_first_name="Sotiris", user_last_name="Poulis", user_email="sotiris@gmail.com",
+    citizen = User(user_first_name="Sotiris", user_last_name="Jameson", user_email="sotiris@example.com",
                    user_pass="sotiris1@",
                    user_type="Citizen", user_tin=None)
 
-    organization1 = User(user_first_name="Oi filoi tou dasous", user_last_name=None, user_email="dasofiloi@gmail.com",
+    organization1 = User(user_first_name="Oi filoi tou dasous", user_last_name=None, user_email="dasofiloi@example.com",
                          user_pass="dasofiloi1@",
                          user_type="Organization", user_tin=648759135)
 
     organization2 = User(user_first_name="Chamogelo tou Politi", user_last_name=None,
-                         user_email="chamogelotoupoliti@gmail.com", user_pass="chamogelo1@",
+                         user_email="chamogelotoupoliti@example.com", user_pass="chamogelo1@",
                          user_type="Organization", user_tin=256478915)
 
     # Check that user's do not already exist in DB

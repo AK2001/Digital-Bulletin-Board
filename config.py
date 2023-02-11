@@ -16,7 +16,8 @@ class Config:
     JWT_COOKIE_SECURE = False
 
     # Set the secret key to sign the JWTs with
-    JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")  # change to env variable
+    JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+    # An authentication session should only last 2 hours before expiring
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=2)
 
     # configure the PostgreSQL database, relative to the main instance folder

@@ -4,6 +4,22 @@
 
 To run this application, configure the Database URL variable that is present in the **.env** file.
 
-Note, this app uses SQLaclhemy to connect to a Database, the current URL is **postgresql://postgres:dbbapp123@localhost:5400/postgres** , which is for connection to a PostgreSQL database. The generic URL is **postgresql://<Username>:<database password>@localhost:<PORT>/<database name>**. Please change this URL to your configuration.
+Note, this app uses SQLaclhemy to connect to a PostgreSQL database.
 
-At last, to **run** the app, run the **app.py** file, which both creates the Database connection and the tables required and defines the API routes.
+Configure the environmental variable found in **.env** file to connect to your local database. The value of the file is of form:
+
+    DATABASE_URL=postgresql://<DB username>:<DB password>@localhost:<DB Port>/<DB name>
+
+Please **change** this URL value to your configuration before proceeding with running the application
+
+
+
+At last, to **run** the app, run the **app.py** file, which creates the Database and populates it with sample data used to simply **demonstrate** its capabilities
+
+### Current functionality
+- Sign up
+- Login
+- Browse available Tasks
+- Contribute to a specific Task
+- Create task (For "Organization" type users only)
+- Delete a specific task (For "Organization" type users only)
