@@ -25,6 +25,8 @@ from sqlalchemy.exc import IntegrityError
 from config import Config
 import json
 
+from populateDB import populate_database # Used to populate database with sample data
+
 # Initializing flask app
 app = Flask(__name__)
 
@@ -345,7 +347,6 @@ def return_own_tasks():
 @jwt_required()
 def return_tasks_by_user():
     tasks = current_user.tasks_contributed
-    print(tasks)
     return jsonify(all_tasks=[task.as_json() for task in tasks])
 
 
@@ -395,6 +396,7 @@ def check_token_validity():
 
 # Used to create the Database schema
 with app.app_context():
+    populate_database(db, User, Task)
     db.create_all()
 
 # Running app
