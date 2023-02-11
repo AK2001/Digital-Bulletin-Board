@@ -345,7 +345,7 @@ def return_own_tasks():
 @jwt_required()
 def return_tasks_by_user():
     tasks = current_user.tasks_contributed
-
+    print(tasks)
     return jsonify(all_tasks=[task.as_json() for task in tasks])
 
 
@@ -358,10 +358,10 @@ def contribute_to_task(task_id):
         description=f"Task with id={task_id} does not exist.")
 
     if task in current_user.tasks_contributed:
-        print("it is")
+        return jsonify({"msg": "ALREADY-CONTRIBUTED"}), 400
 
     if task.task_state != "Ongoing":
-        return jsonify({"msg": "Cannot contribute to a task that is Completed or Achieved"}), 400
+        return jsonify({"msg": "TASK!ONGOING"}), 400
 
     try:
         current_user.tasks_contributed.append(task)
