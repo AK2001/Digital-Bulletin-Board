@@ -12,7 +12,7 @@ Configure the environmental variable found in **.env** file to connect to your l
 
 Please **change** this URL value to your configuration before proceeding with running the application
 
-
+Feel free to change the JWT_SECRET_KEY value in the same file. This value determines the JWT key. The current value is a sample value and should not be used in **production**
 
 At last, to **run** the app, run the **app.py** file, which creates the Database and populates it with sample data used to simply **demonstrate** its capabilities
 
