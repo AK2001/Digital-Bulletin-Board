@@ -34,7 +34,7 @@ export default function UserMainContent(){
 
     // Takes user variable as defined withing the AuthContext in AuthContextProvider.tsx
     // User -- holds information about the user, given by the backend
-    const { user } = useContext(AuthContext);
+    const { user, handleSessionExpired } = useContext(AuthContext);
 
     // Stringify the JSON object
     const userDataString = JSON.stringify(user);
@@ -67,7 +67,9 @@ export default function UserMainContent(){
             .then((res) => {
                 setAllTasksByUser(res.data.all_tasks)
             }).catch(err => {
-                console.log(err)
+                if (err.response.statusText === "UNAUTHORIZED"){
+                    handleSessionExpired()
+                }
             });
     }
 
@@ -75,7 +77,6 @@ export default function UserMainContent(){
     useEffect(() =>{
         getTasks()
         getTasksByUser()
-
     },[])
 
     return (

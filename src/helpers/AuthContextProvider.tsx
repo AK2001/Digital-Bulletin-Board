@@ -11,6 +11,7 @@ type AuthContextType = {
     login: (data: string) => void;
     logout: () => void;
     createTask: (data: string) => void;
+    handleSessionExpired: () => void;
 }
 
 // createContext hook that initializes the "state" i.e., value
@@ -21,6 +22,7 @@ const AuthContext = createContext<AuthContextType>({
     login: () => {},
     logout: () => {},
     createTask: () => {},
+    handleSessionExpired: () => {},
 });
 
 // Interface for the props of AuthContextProvider component
@@ -46,6 +48,7 @@ export const AuthContextProvider:React.FC<AuthProviderProps> = ({ children }) =>
         }
         return null;
     });
+
 
     // Create a constant that will hold useNavigate hook
     // used to "change" the path and thus components
@@ -128,9 +131,21 @@ export const AuthContextProvider:React.FC<AuthProviderProps> = ({ children }) =>
 
         navigate("/");
     }
+
+    // Called whenever a connection has expired but an API call on a protected
+    // route is made, deletes localy stored authentication values and redirects user to login page
+    const handleSessionExpired = () => {
+        window.alert("Your session has expired...Exiting application")
+        localStorage.removeItem("isUserLoggedIn");
+        localStorage.removeItem("userProfile");
+        setUser(null);
+        navigate("/login");
+    }
+
+
     return (
         <>
-            <AuthContext.Provider value={{ user, signup, login, logout, createTask }}>
+            <AuthContext.Provider value={{ user, signup, login, logout, createTask, handleSessionExpired }}>
                 {children}
             </AuthContext.Provider>
         </>

@@ -92,14 +92,22 @@ export default function TaskPage(){
     async function contributeToTask(){
         await axios.get("/api/contributeToTask/"+taskId)
             .then(() => {
-                window.location.reload()
+                window.alert("Contributed to task: " + taskData.taskTitle)
+                navigate("/browseTasks")
             }).catch(err => {
-                console.log(err)
+                // console.log(err)
                 if (err.response.status===404){
                     navigate("/browseTasks")
-                }
-                if (err.response.status===400){
-                    window.alert("You cannot contribute to a task that is either Completed or Achieved")
+                }else if (err.response.status===400){
+                    if(err.response.data.msg === "ALREADY-CONTRIBUTED"){
+                        window.alert("You cannot contribute to a task you have already contributed to")
+                    }
+                    if(err.response.data.msg === "TASK!ONGOING"){
+                        window.alert("You cannot contribute to a task that is either Completed or Achieved")
+                    }
+                    navigate("/browseTasks")
+                }else{
+                    console.log(err)
                 }
             });
     }
